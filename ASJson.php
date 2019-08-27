@@ -30,7 +30,7 @@ function ASJsonEncode( $value , bool $sub = false ){
 
         foreach ($value as $k => $v) {
 
-            $encode['_V'][$k] = STATIC::ASJsonEncode($v,true);       
+            $encode['_V'][$k] = ASJsonEncode($v,true);       
 
         }
     }else{
@@ -55,7 +55,7 @@ function ASJsonEncode( $value , bool $sub = false ){
     if(!isset($decode['_T'])){
 
         foreach ($decode as $key => $value) {
-            $decode[$key] = STATIC::ASJsonDecode($value);
+            $decode[$key] = ASJsonDecode($value);
         }
 
         return $decode;
@@ -63,7 +63,7 @@ function ASJsonEncode( $value , bool $sub = false ){
 
     switch ($decode['_T']) {
         case 'ASJ':
-        $v = STATIC::ASJsonDecode($decode['_V']);
+        $v = ASJsonDecode($decode['_V']);
         break;
         case 'i':
         $v = (int)$decode['_V'];
